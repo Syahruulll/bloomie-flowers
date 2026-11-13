@@ -1,0 +1,394 @@
+{
+ "version": 1,
+ "at": "2026-11-04T07:26:42.871Z",
+ "seed": 1438468342,
+ "redraws": 0,
+ "input": {
+  "brief": "Bloomie Flowers, a Karimun florist offering bouquets and handmade celebration gifts; blue-white boutique, phone-first product discovery and WhatsApp orders",
+  "sector": "ecommerce",
+  "tone": "editorial",
+  "have": [
+   "product-photo",
+   "photography"
+  ],
+  "keep": [
+   "palette",
+   "type"
+  ],
+  "avoid": [],
+  "sections": [
+   "showcase"
+  ],
+  "direction": "specimen-catalogue"
+ },
+ "imagery": "own",
+ "allow": [],
+ "direction": {
+  "id": "specimen-catalogue",
+  "name": "The specimen catalogue",
+  "sectors": [
+   "ecommerce",
+   "physical-product",
+   "restaurant",
+   "fashion",
+   "culture",
+   "education",
+   "health",
+   "other"
+  ],
+  "tones": [
+   "playful",
+   "warm",
+   "editorial"
+  ],
+  "needs": [
+   "product-photo"
+  ],
+  "idea": "Present what is on offer the way a field guide presents birds: each item alone on a flat colour, same scale, same angle, named plainly. A bakery's pastries become specimens and the specimens become the menu. A furniture maker's chairs each get their own colour tile. The format flatters ordinary objects because it treats each as worth looking at, and it replaces both the feature grid and the product-card grid with something that has a point of view.",
+  "composition": "Hero: a left-aligned statement of what this is (5–7vw, upper-left) beside or above a tight cluster of four to seven specimen tiles of different sizes arranged as a loose mosaic that runs off the right edge. Each tile is a flat colour square or 4:5 rectangle with one photograph centred on it, no border, 8–12px gaps. The main section is the catalogue itself: a grid of tiles in which each item has its name and one fact set beneath the tile in the text face, aligned left to the tile edge. Tile colours rotate through three or four fields from the palette. One tile in every six or seven is double size. Supporting sections (about, how to order) are plain text on the ground colour, kept short.",
+  "typography": "Friendly and plain. Item names at 18–22px in medium weight, facts beneath in the soft ink. One big statement in the hero; no other display type.",
+  "typeClasses": [
+   "grotesk-tight",
+   "serif-text",
+   "slab",
+   "rounded-friendly"
+  ],
+  "colour": "The tiles are the colour: three or four flat fields from the palette, repeated in a steady rotation. Ground stays neutral.",
+  "paletteTags": [
+   "pastel-fields",
+   "flat-loud",
+   "light-neutral"
+  ],
+  "imagery": "Photographs of single items on plain backgrounds, all cropped to sit at the same apparent size within their tile. On light tiles, `mix-blend-mode: multiply` removes white studio backgrounds. If the subject's own item photographs are missing, use the dealt set and say so.",
+  "sectionTags": [
+   "object-led",
+   "colour-field",
+   "photo-led"
+  ],
+  "motion": "drag-row",
+  "richness": "Rhythm of colour tiles and the pleasure of comparing like with like.",
+  "pitfalls": "It needs at least six items that can be shown as objects; with three it is a feature row. Keep labels outside the tiles. No shadows under the objects, no hover lift.",
+  "seenIn": [
+   "aww-noho",
+   "opl-madie",
+   "opl-humanoid-index",
+   "opl-smallbits",
+   "aww-butter"
+  ],
+  "allow": []
+ },
+ "hero": {
+  "id": "anchored-text-specimen-half",
+  "name": "Anchored text, specimen half",
+  "archetype": "split",
+  "directions": [
+   "split-stage",
+   "specimen-catalogue",
+   "hero-object"
+  ],
+  "needs": [
+   "product-photo"
+  ],
+  "blueprint": "The viewport is split exactly in half by two flat tones that meet at a clean vertical edge: the ground on the left, a palette colour on the right. Left half: the wordmark sits top-left on a 40px margin; the next two thirds of the height are empty; everything else is anchored bottom-left and ends 40px above the bottom edge: a headline on one or two lines at clamp(28px, 2.6vw, 40px), medium weight; one sentence at 18px in the soft ink, max 38ch; the single action as a solid rectangle. Right half: position: sticky; top: 0; height: 100svh. In its centre sits a square tile in a second palette colour, 450px wide (31vw) with a 24px radius, holding one cut-out item at 70% of the tile, object-fit: contain, mix-blend-mode: multiply on light fills. Under the tile's left corner the item's name and one fact sit at 15px. As the left column scrolls through the catalogue, the tile's item and colour swap to match the entry in view. One text link sits top-right on the colour field.",
+  "mobile": "The colour half comes first as a block 52svh tall holding the square tile at 62vw, centred, and stays sticky while the text slides over its lower edge. The text block follows on the ground: the headline at 7vw on two lines, the sentence at 16px, the action full width. The wordmark and one link sit on the top row over the colour.",
+  "headline": "A modest 3-6 word line at 28-40px, at most 40 characters; the object, not the type, carries the screen.",
+  "motion": "pinned-story",
+  "seenIn": [
+   "opl-dabbit"
+  ]
+ },
+ "type": null,
+ "palette": null,
+ "photos": {
+  "set": "plants-and-flowers",
+  "title": "Plants and flowers",
+  "note": "botanical close-ups, leaves and flowers",
+  "treatment": null,
+  "others": [
+   "architecture",
+   "coast",
+   "mountain",
+   "fog-and-quiet"
+  ],
+  "photos": [
+   {
+    "id": 798,
+    "alt": "White daisy with a yellow and green centre on a white background",
+    "tone": "light",
+    "colours": [
+     "white",
+     "yellow",
+     "green"
+    ],
+    "mono": false,
+    "calm": "left",
+    "quality": 5,
+    "ratio": 1.33,
+    "by": "Aaron Burden",
+    "page": "https://unsplash.com/photos/UvRMcIeXq9Y"
+   },
+   {
+    "id": 306,
+    "alt": "White water lily with yellow centre among dark lily pads",
+    "tone": "dark",
+    "colours": [
+     "white",
+     "dark green",
+     "yellow"
+    ],
+    "mono": false,
+    "calm": "none",
+    "quality": 5,
+    "ratio": 1.33,
+    "by": "Schicka",
+    "page": "https://unsplash.com/photos/6T7kfc3VitU"
+   },
+   {
+    "id": 738,
+    "alt": "Single white calla lily against a dark, almost black background",
+    "tone": "dark",
+    "colours": [
+     "near black",
+     "cream white",
+     "soft green"
+    ],
+    "mono": false,
+    "calm": "left",
+    "quality": 5,
+    "ratio": 0.67,
+    "by": "Marta Pawlik",
+    "page": "https://unsplash.com/photos/yqmlajPxR3Y"
+   },
+   {
+    "id": 152,
+    "alt": "Purple petunia flowers with dark green leaves, close-up",
+    "tone": "dark",
+    "colours": [
+     "violet",
+     "dark green"
+    ],
+    "mono": false,
+    "calm": "none",
+    "quality": 4,
+    "ratio": 1.5,
+    "by": "Steven Spassov",
+    "page": "https://unsplash.com/photos/tVIqMgGlAG0"
+   },
+   {
+    "id": 400,
+    "alt": "Green plant with tight flower buds against a dark teal background",
+    "tone": "dark",
+    "colours": [
+     "emerald green",
+     "dark teal"
+    ],
+    "mono": false,
+    "calm": "right",
+    "quality": 4,
+    "ratio": 1.5,
+    "by": "John French",
+    "page": "https://unsplash.com/photos/SNW4DWZEy8I"
+   },
+   {
+    "id": 940,
+    "alt": "Blue-green succulent rosettes filling the frame from above",
+    "tone": "mid",
+    "colours": [
+     "teal green",
+     "dark green",
+     "dusty purple"
+    ],
+    "mono": false,
+    "calm": "none",
+    "quality": 5,
+    "ratio": 0.66,
+    "by": "Annie Spratt",
+    "page": "https://unsplash.com/photos/8mqOw4DBBSg"
+   },
+   {
+    "id": 517,
+    "alt": "Orange tree branches heavy with fruit against a clear blue sky",
+    "tone": "light",
+    "colours": [
+     "sky blue",
+     "orange",
+     "green"
+    ],
+    "mono": false,
+    "calm": "right",
+    "quality": 4,
+    "ratio": 1.5,
+    "by": "Brian Jimenez",
+    "page": "https://unsplash.com/photos/ch-mPpglKjQ"
+   },
+   {
+    "id": 159,
+    "alt": "Water drop hanging from the tip of a green leaf",
+    "tone": "mid",
+    "colours": [
+     "leaf green",
+     "soft green"
+    ],
+    "mono": false,
+    "calm": "right",
+    "quality": 4,
+    "ratio": 2.03,
+    "by": "Shyamanta Baruah",
+    "page": "https://unsplash.com/photos/kxqvE41_07k"
+   }
+  ]
+ },
+ "motion": {
+  "id": "pinned-story",
+  "name": "Pinned story",
+  "description": "One element holds its place with `position: sticky` (a title, a frame, a product fragment) while the items that belong to it scroll past or swap inside it. The page's ordinary scrolling does the work; nothing is hijacked. Keep the pinned run under six screens. Recipe: 'Pinned story' in references/motion.md."
+ },
+ "sections": [
+  {
+   "id": "showcase-object-on-a-disc",
+   "role": "showcase",
+   "name": "Object on a disc",
+   "shape": "index",
+   "tags": [
+    "object-led",
+    "colour-field"
+   ],
+   "directions": [
+    "one-motif",
+    "specimen-catalogue",
+    "hero-object",
+    "colour-chapters"
+   ],
+   "needs": [],
+   "blueprint": "One section about a viewport tall on a plain ground. A flat filled disc 64vh across, in one palette colour, sits with its centre at 58% of the width; swap the disc for the subject's own shape if it has one. A cut-out object photograph stands in front of it, centred on it, about 78% of the disc's height and breaking the disc's outline at the top. Bottom-left, starting on the margin and ending level with the disc's lower edge: a vertical list of four to six item names at clamp(28px, 2.9vw, 44px), leading 1.15. The selected name is in full ink and the rest at 25%; choosing a name swaps the object (300ms crossfade) and the disc's colour. The heading, two to four words at the same size as the names but in the soft ink, is the first line of that list. One fact about the selected item sits at the disc's right edge at 17px.",
+   "mobile": "The disc comes first, 86vw across and centred, with the object in front. The names follow as a single sideways-scrolling line at 26px with 24px gaps, the selected one in full ink. The fact sits under the names at 16px.",
+   "seenIn": [
+    "aww-cominvi",
+    "opl-tara"
+   ]
+  }
+ ],
+ "references": [
+  {
+   "id": "opl-smallbits",
+   "name": "Smallbits",
+   "url": "https://smallbits.design",
+   "source": "One Page Love",
+   "kind": "other",
+   "score": 7.2,
+   "idea": "The icon set is the page: a full-viewport wall of the product with one docked card holding every word.",
+   "mood": [
+    "stark",
+    "pixelated",
+    "minimal",
+    "direct"
+   ],
+   "archetype": "grid-index",
+   "hero": "The whole viewport is a black field tiled with white pixel icons, each drawn about 50px on a 112px pitch, nine rows deep; alternate rows shift half a cell so it reads as a brick pattern, and icons at the edges are cropped. There is no header. A white square-cornered card, 795×170px, is docked bottom-centre: a two-line 24px semibold sentence left, a black rectangular button right, a row of five grey links below. A third-party badge floats top-right. This single screen is the entire page.",
+   "type": "Inter 600 at 24px, -0.02em, for the one sentence; Inter 16px semibold grey for links and button. Nothing exceeds 1.7vw — the pixel icons, not type, are the display element.",
+   "colour": "#000000 #ffffff #9a9a9a #ff6154 — Strict black and white: white icons on black, black text on a white card, grey for secondary links. The only colour is the coral third-party badge.",
+   "imagery": "About ninety visible pixel icons, each an 8×8 bitmap drawn at 50px in pure white with hard edges, tiled full-bleed and cropped at the viewport edges.",
+   "layout": "One viewport, no scroll. A staggered icon grid fills the frame edge to edge; all words live in one docked card. On mobile the card becomes a full-width white block with a full-width button.",
+   "sections": [
+    {
+     "role": "other",
+     "description": "Mobile restack, the only other state. The icon wall drops to five columns filling the top 73% of the screen; the card becomes a full-width white block at the bottom with the sentence on three lines at 18px, a full-width black button 78px tall, and five grey links spaced evenly on one line."
+    }
+   ],
+   "steal": [
+    "Make the product the wallpaper: tile the full viewport with the assets at large size and skip a hero image entirely.",
+    "Offset alternate rows by half a cell so a regular grid reads as a pattern rather than a table.",
+    "Compress all copy, the CTA and the footer links into one docked card so the page never needs to scroll."
+   ]
+  },
+  {
+   "id": "aww-noho",
+   "name": "Noho",
+   "url": "https://noho.ink",
+   "source": "Awwwards Site of the Day",
+   "kind": "physical-product",
+   "score": 8,
+   "idea": "Furniture sold through people misusing it (wearing, balancing on, hiding behind chairs on flat colour backdrops) while the interface stays quiet beige.",
+   "mood": [
+    "playful",
+    "warm",
+    "clean",
+    "confident",
+    "humane"
+   ],
+   "archetype": "split-text-media",
+   "hero": "The viewport splits exactly 50/50 by tone alone: left half warm off-white, right half a slightly darker greige, no rule. Left: a small lowercase logo top-left at 30px margin, then a four-line bold headline at 60px (4.2vw), tracking -0.04em and leading near 1.0, top-left aligned and filling the upper 40%; the lower half is empty except for a one-line 18px tagline pinned bottom-left. Right: a staggered mosaic of seven portrait photos, each about 175 by 230px with 15px gaps, on a four-column, three-row grid with several cells left empty and the rightmost image cropped by the viewport edge. A white square menu button sits top-right.",
+   "type": "Switzer only. Headlines weight 600, tracking -0.04em, sentence case, charcoal rather than black; statements at 60px, body 13.5px, meta labels about 11px grey. The digest records one element at 15.6vw. Roughly four sizes, one family, no caps.",
+   "colour": "#f1eee9 #e7e2dc #cdc0b0 #3c3c3c #b4a5db #f2e05a — The interface is three close warm beiges with charcoal type; saturated colour (lilac, yellow, olive, terracotta, sand) exists only in photo backdrops and the products themselves.",
+   "imagery": "Studio shots of people interacting oddly with chairs on seamless single-colour backdrops, portrait 3:4, square corners; plus very large cut-out product shots on beige with a soft radial glow and contact shadow, cropped by the panel edge.",
+   "layout": "Outer margins of 16-30px. Sections alternate between split halves, centred statements and left-aligned headings over card rows. Cards are flat rectangles one tone darker than the page with 8px gaps, content pinned to the top-left and bottom edges. Wide empty bands separate sections.",
+   "sections": [
+    {
+     "role": "intro",
+     "description": "A centred four-line statement at about 60px bold with tiny square photo thumbnails, roughly one cap-height tall, dropped inline between words like emoji. Directly beneath, the page splits into two full-width flat colour halves (light greige and tan), each with a small circled plus button in its top inner corner; these are the tops of the two product panels."
+    },
+    {
+     "role": "showcase",
+     "description": "Two side-by-side panels in different beiges, each dominated by one enormous cut-out chair (one yellow, one black) cropped at the top so mostly seat and legs show, with a soft radial highlight behind. Along the bottom of each panel: a tiny label and price at left, a row of colour-swatch dots, then two small rectangular buttons at right, one white and one charcoal."
+    },
+    {
+     "role": "stats",
+     "description": "Three equal flat tiles in a row with 8px gaps, each about 210px tall. One short claim is centred in each at roughly 18px, and an index number sits alone in the bottom-left corner in 11px. A small bulleted label hangs above each tile. After a large empty gap, another centred bold statement begins."
+    },
+    {
+     "role": "testimonial",
+     "description": "A horizontal strip of colour-backdrop photos bleeds off both edges at the top of the section. Below, a left-aligned bold heading at about 40px, then a row of beige cards overflowing to the right: each has an @name at top-left, a short paragraph in 11px, and a bottom row with star glyphs left and a small text link right."
+    }
+   ],
+   "steal": [
+    "Split the hero 50/50 by background tone alone, park the headline top-left and one tagline bottom-left, and fill the other half with a staggered photo mosaic that leaves grid cells empty.",
+    "Keep the interface in three close beige tones and confine all saturated colour to photo backdrops and products, so the photography becomes the palette.",
+    "Drop cap-height photo thumbnails inline between the words of a large centred statement."
+   ]
+  },
+  {
+   "id": "aww-aardvark-book-club",
+   "name": "Aardvark Book Club",
+   "url": "https://aardvarkbookclub.com",
+   "source": "Awwwards Site of the Day",
+   "kind": "ecommerce",
+   "score": 7.7,
+   "idea": "A book club dressed as a sweet shop: fat black type, tumbling 3D books and boxes on wavy colour fields, annotated with handwritten asides.",
+   "mood": [
+    "playful",
+    "loud",
+    "bookish",
+    "warm"
+   ],
+   "archetype": "split-text-media",
+   "hero": "A saturated yellow field with two large wavy blobs, pale yellow then orange, rising from the bottom. A three-line headline in Champ Bold, black, at about 8.3vw with leading under 0.85, is flush to a 15px left margin and reaches 60% across. Beneath it: a four-line paragraph 310px wide and a magenta split button (label plus arrow square). Right of centre a 3D hardback in navy and pink tilts 20 degrees, 600px tall; another book is cropped by the top-left corner, a third by the bottom edge. A purple handwritten note sits rotated at far right. Nav: pale-yellow pill links centred, an orange login button, black round social icons.",
+   "type": "Champ Bold, an ultra-heavy wide sans with a looped g, for headings at 120px with tight tracking and leading; Degular for 18px body and pill labels; a purple handwritten script (Hello Organichand) for rotated margin notes and step labels. Three distinct voices.",
+   "colour": "#ffd249 #faed8f #f9a21f #ffdbfd #a4f6f8 #fd48f2 — Each section owns one flat candy colour: yellow hero, white shelf, pink steps, cyan unboxing, deep violet footer. Type stays black; buttons are magenta.",
+   "imagery": "3D-rendered hardbacks and a patterned shipping box, cut out and tilted, floating over flat wavy vector shapes; real book covers on tilted coloured cards; black line drawings of figures on step cards. Nothing sits square to the grid.",
+   "layout": "Sections are full-width panels with roughly 80px corner radius inset about 20px from the viewport, each a different colour. Headings alternate left and centre; cards overlap and rotate a few degrees; handwritten notes are tucked beside headings at an angle.",
+   "sections": [
+    {
+     "role": "showcase",
+     "description": "White band. A centred black heading at 5.5vw over a two-line subline, with a rotated handwritten note at its upper left. Below, a horizontal row of book covers, each on a rounded colour-matched card with a small tag pill at top-left; cards tilt alternately by 3 degrees at staggered heights, the last cropped by the right edge, with two round arrow buttons above at right. Later, covers give way to same-coloured info cards with genre pills, heavy title and blurb."
+    },
+    {
+     "role": "how-it-works",
+     "description": "A pale-pink rounded panel with lighter wavy shapes inside. Heavy black heading at left with a handwritten aside beside it; a small round logo stamp and a magenta split button at right. Along the bottom, four portrait cards about 250px wide in cyan, magenta, yellow and violet overlap like a fanned hand, each rotated a few degrees, with a handwritten step label at top, a black line drawing in the middle and a heavy caption at the foot."
+    },
+    {
+     "role": "other",
+     "description": "A full-viewport cyan rounded panel containing only a 3D shipping box wrapped in a wavy magenta, violet and black pattern, centred. Across the scroll it goes from closed and tilted to lid open, growing to about 57% of the viewport width, with a single handwritten note at its right. No heading and no button."
+    },
+    {
+     "role": "footer",
+     "description": "The preceding white section ends in large rounded bottom corners over a deep violet footer. Left: white logo, two store badges, two magenta round social icons. Centre: the patterned box again, cropped by the bottom edge. Right: a small heavy heading, a white rounded email field and a magenta split button. A black legal strip closes the page."
+    }
+   ],
+   "steal": [
+    "Give each section one flat saturated colour inside a large-radius inset panel and keep the type black across all of them.",
+    "Add rotated handwritten margin notes beside headings to carry secondary facts in a second voice.",
+    "Fan step cards so they overlap and tilt instead of sitting in an even grid."
+   ]
+  }
+ ]
+}
