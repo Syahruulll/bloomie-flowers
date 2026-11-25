@@ -40,6 +40,46 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const categoryFilters = document.querySelector('[data-category-filters]');
+    const categoryFilterButtons = categoryFilters?.querySelectorAll('[data-category-filter]') ?? [];
+    const catalogueSections = [...document.querySelectorAll('[data-section-category]')];
+    const filterStatus = document.querySelector('[data-filter-status]');
+
+    if (categoryFilters && categoryFilterButtons.length && catalogueSections.length) {
+        const applyCategoryFilter = (selectedCategory) => {
+            let visibleProductCount = 0;
+
+            catalogueSections.forEach((section) => {
+                const isVisible = selectedCategory === 'all' || section.dataset.sectionCategory === selectedCategory;
+                section.hidden = !isVisible;
+
+                if (isVisible) {
+                    visibleProductCount += section.querySelectorAll('.product-specimen').length;
+                }
+            });
+
+            categoryFilterButtons.forEach((button) => {
+                button.setAttribute('aria-pressed', String(button.dataset.categoryFilter === selectedCategory));
+            });
+
+            if (filterStatus) {
+                const selectedButton = [...categoryFilterButtons].find((button) => button.dataset.categoryFilter === selectedCategory);
+                const categoryLabel = selectedButton?.textContent.trim();
+                const productLabel = visibleProductCount === 1 ? 'product' : 'products';
+                filterStatus.textContent = selectedCategory === 'all'
+                    ? `Showing all ${visibleProductCount} ${productLabel}.`
+                    : `Showing ${visibleProductCount} ${productLabel} in ${categoryLabel}.`;
+            }
+        };
+
+        categoryFilterButtons.forEach((button) => {
+            button.addEventListener('click', () => applyCategoryFilter(button.dataset.categoryFilter));
+        });
+
+        categoryFilters.hidden = false;
+        applyCategoryFilter('all');
+    }
+
     const categorySelect = document.querySelector('[data-category-select]');
     const menuSelect = document.querySelector('[data-menu-select]');
 

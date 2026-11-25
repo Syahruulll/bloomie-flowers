@@ -23,8 +23,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin', [AdminController::class, 'index']);
     Route::get('/admin/create', [AdminController::class, 'create']);
     Route::post('/admin', [AdminController::class, 'store']);
-    Route::get('/admin/edit/{admin}', [AdminController::class, 'edit']);
-    Route::put('/admin/update/{admin}', [AdminController::class, 'update']);
-    Route::delete('/admin/delete/{admin}', [AdminController::class, 'destroy']);
+    Route::get('/admin/edit/{product}', [AdminController::class, 'edit']);
+    Route::put('/admin/update/{product}', [AdminController::class, 'update']);
+    Route::delete('/admin/delete/{product}', [AdminController::class, 'destroy']);
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

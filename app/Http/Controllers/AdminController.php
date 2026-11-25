@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class AdminController extends Controller
 {
@@ -12,9 +13,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $admins = Admin::all();
+        $products = Product::query()->orderBy('title')->get();
 
-        return view('Admin.index', compact('admins'));
+        return view('Admin.index', compact('products'));
     }
 
     public function create()
@@ -24,70 +25,37 @@ class AdminController extends Controller
 
     public function store(Request $request)
     {
-        $photoName = null;
+        $data = $request->validate($this->rules(photoRequired: true));
 
         if ($request->hasFile('photo')) {
-            $photoName = time() . '.' . $request->photo->extension();
-            $request->photo->move(public_path('uploads'), $photoName);
+            $data['photo'] = $this->storePhoto($request);
         }
 
-        Admin::create([
-            'photo' => $photoName,
-            'title' => $request->title,
-            'description' => $request->description,
-            'price' => $request->price,
-            'category' => $request->category,
-            'menu' => $request->menu,
-        ]);
+        Product::create($data);
 
-        return redirect('/admin')->with('success', 'Admin created successfully.');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Admin $admin)
-    {
-        //
+        return redirect('/admin')->with('success', 'Product created successfully.');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Admin $admin)
+    public function edit(Product $product)
     {
-        return view('Admin.edite', compact('admin'));
+        return view('Admin.edite', compact('product'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Admin $admin)
+    public function update(Request $request, Product $product)
     {
-        $data = $request->validate([
-            'title' => 'required',
-            'category' => 'required',
-            'price' => 'required',
-            'menu' => 'required',
-            'description' => 'required',
-            'photo' => 'nullable|image'
-        ]);
+        $data = $request->validate($this->rules());
 
-        // upload foto baru
         if ($request->hasFile('photo')) {
-
-            $photoName = time() . '.' . $request->photo->extension();
-
-            $request->photo->move(
-                public_path('uploads'),
-                $photoName
-            );
-
-            $data['photo'] = $photoName;
+            $data['photo'] = $this->storePhoto($request);
         }
 
-        // update data
-        $admin->update($data);
+        $product->update($data);
 
         return redirect('/admin')
             ->with('success', 'Product berhasil di update');
@@ -96,12 +64,35 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Product $product)
     {
-        $admin = Admin::findOrFail($id);
+        $product->delete();
 
-        $admin->delete();
+        return redirect('/admin')->with('success', 'Product deleted successfully.');
+    }
 
-        return redirect('/admin')->with('success', 'Admin deleted successfully.');
+    /** @return array<string, array<int, string>> */
+    private function rules(bool $photoRequired = false): array
+    {
+        return [
+            'title' => ['required', 'string', 'max:255'],
+            'category' => ['required', 'string', 'max:100'],
+            'menu' => ['required', 'string', 'max:100'],
+            'price' => ['required', 'integer', 'min:0'],
+            'description' => ['required', 'string'],
+            'photo' => [$photoRequired ? 'required' : 'nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
+        ];
+    }
+
+    private function storePhoto(Request $request): string
+    {
+        $file = $request->file('photo');
+        $photoName = uniqid('product-', true).'.'.$file->extension();
+        $uploadDirectory = public_path('uploads');
+
+        File::ensureDirectoryExists($uploadDirectory);
+        $file->move($uploadDirectory, $photoName);
+
+        return $photoName;
     }
 }

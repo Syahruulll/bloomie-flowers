@@ -7,6 +7,96 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Bloomie Flowers
+
+Bloomie Flowers is a Laravel application for browsing a flower catalogue and managing products. Customers browse and filter the catalogue, then contact the seller through WhatsApp. Admins sign in to manage products and uploaded photos.
+
+### Product API
+
+- `GET /api/products` returns the catalogue. Add `?category=bouquet` to filter by category.
+- `GET /api/products/{id}` returns one product.
+
+Both endpoints return a `data` object or collection with the product title, description, price, category, menu item, and photo URL. Admin product create, update, and delete pages require login.
+
+### Database
+
+Product data is stored in the `admins` table to match the project requirements document. Its UUID key and product fields are `photo`, `title`, `description`, `price`, `category`, and `menu`, with timestamps. Login accounts are stored in `users`.
+
+### Local setup
+
+Configure the database connection in `.env`, then run:
+
+```bash
+php artisan migrate
+```
+
+Set up an admin account before signing in at `/login`.
+
+### Docker Compose and service architecture
+
+The Compose stack runs Nginx, Laravel, and PostgreSQL as separate services. Nginx is the only service published to the host on port 80. Laravel listens on port 8000 inside the Compose network, and PostgreSQL listens on port 5432 inside that network. The database port is not published to client networks. `DB_HOST=database` resolves through Compose service discovery. PostgreSQL data, Laravel storage, and uploaded photos use persistent Docker volumes.
+
+1. Make sure `.env` exists and contains an `APP_KEY`. If needed, create it from `.env.example`, then generate a key:
+
+   ```powershell
+   Copy-Item .env.example .env
+   php artisan key:generate
+   ```
+
+   Skip `Copy-Item` when `.env` already exists so you keep your local configuration.
+
+2. Build and start the containers, then migrate the Compose database:
+
+   ```powershell
+   docker compose up --build -d
+   docker compose exec app php artisan migrate --force
+   ```
+
+3. Open `http://localhost` (or `http://localhost:8080` if `HTTP_PORT=8080` is set in `.env`). The Compose database is separate from the PostgreSQL database installed on Windows.
+
+Useful commands:
+
+```powershell
+docker compose ps
+docker compose logs -f nginx app database
+docker compose down
+```
+
+Do not add `-v` to `docker compose down` unless you intend to delete the Compose database and uploaded-file volumes.
+
+### GNS3 network and access policy
+
+Run Docker Compose on the Linux Docker Host attached to the GNS3 server segment. Assign that host an unused address in `192.168.102.0/24`, with `192.168.102.1` as its gateway. Docker Compose keeps Nginx, Laravel, and PostgreSQL on a private container network; only Nginx port 80 is published on the Docker Host.
+
+The project address plan is:
+
+```text
+LAN Client:         192.168.101.0/24, gateway 192.168.101.1
+LAN Server/Docker:  192.168.102.0/24, gateway 192.168.102.1
+LAN Admin:          192.168.103.0/24, gateway 192.168.103.1
+```
+
+The MikroTik CHR routes between these segments. Allow clients to reach the Docker Host on TCP port 80. Do not expose PostgreSQL port 5432 to the client segment; Laravel reaches it internally as `database:5432`. Restrict the admin segment and router-management access to authorized devices. The expected HTTP path is client, switch, CHR, server switch, Docker Host Nginx, Laravel, then PostgreSQL.
+
+From a client in the GNS3 LAN Client segment, browse to `http://<Docker-Host-IP>` and `/api/products`. That request should cross the CHR; it should not use `localhost` or access PostgreSQL directly.
+
+### Skenario penerimaan manual
+
+| Kebutuhan | Langkah | Hasil yang diharapkan |
+| --- | --- | --- |
+| KF-01 Katalog | Buka halaman utama. | Semua produk menampilkan foto, judul, deskripsi, harga, dan kategori. |
+| KF-02 Filter kategori | Pilih tombol kategori, lalu pilih **All products**. | Hanya kategori terpilih yang tampil; tombol All mengembalikan semua produk. |
+| KF-03 WhatsApp | Tekan produk atau tombol pemesanan. | WhatsApp penjual terbuka dengan nama produk pada pesan. |
+| KF-04/KF-05 Login dan akses | Buka `/admin` tanpa login, lalu coba login dengan sandi salah dan benar. | Pengunjung diarahkan ke login; sandi salah ditolak; akun sah masuk ke admin. |
+| KF-06–KF-10 Kelola produk | Buat produk dengan foto dan seluruh kolom; edit produk; ganti foto; hapus produk. | Perubahan tersimpan di PostgreSQL dan langsung terlihat di katalog. Form menolak kolom wajib kosong atau file foto yang tidak didukung. |
+| KF-11 Logout | Tekan logout lalu buka `/admin` lagi. | Sesi berakhir dan halaman admin meminta login kembali. |
+
+| Jalur jaringan | Pengujian | Hasil yang diharapkan |
+| --- | --- | --- |
+| Client → Docker Host TCP 80 | Dari LAN Client, buka `http://<Docker-Host-IP>` atau jalankan `curl -I http://<Docker-Host-IP>`. | Katalog terjawab melalui CHR dan Nginx. |
+| Client → PostgreSQL TCP 5432 | Coba koneksi dari LAN Client ke port database. | Koneksi ditolak; PostgreSQL hanya menerima trafik internal Compose. |
+| Persistensi | Tambah produk, restart Compose tanpa `-v`, lalu buka katalog lagi. | Produk dan foto tetap tersimpan. |
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:

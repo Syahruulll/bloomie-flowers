@@ -9,9 +9,9 @@
             <div>
                 <p class="section-kicker">Bloomie Flowers · Studio</p>
                 <h1>Edit your creation.</h1>
-                <p class="admin-subtitle">Update the details for {{ $admin->title }}.</p>
+                <p class="admin-subtitle">Update the details for {{ $product->title }}.</p>
             </div>
         </div>
-        <x-product-form :action="url('/admin/update/' . $admin->id)" :product="$admin" method="PUT" submit-label="Save changes" />
+        <x-product-form :action="url('/admin/update/' . $product->id)" :product="$product" method="PUT" submit-label="Save changes" />
     </main>
 @endsection

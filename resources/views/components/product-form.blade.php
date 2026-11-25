@@ -27,7 +27,7 @@
                     <strong>Choose a photo</strong>
                     <span>JPG, PNG or WEBP</span>
                 </span>
-                <input id="photo-upload" name="photo" type="file" accept="image/*" class="visually-hidden" data-photo-input>
+                <input id="photo-upload" name="photo" type="file" accept=".jpg,.jpeg,.png,.webp" class="visually-hidden" data-photo-input @if($method === 'POST') required @endif>
             </label>
             <p class="field-hint">A clear, well-lit image helps each piece shine.</p>
         </div>

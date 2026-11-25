@@ -36,9 +36,9 @@
             </div>
 
             <div class="hero-specimens" aria-label="A selection of Bloomie creations" data-reveal>
-                @forelse($admins->take(4) as $index => $admin)
-                    <a class="hero-specimen specimen-{{ $index + 1 }}" data-category="{{ $admin->category }}" href="#{{ $admin->category }}-section" aria-label="Explore {{ $admin->title }}">
-                        <img src="{{ asset('uploads/' . $admin->photo) }}" alt="{{ $admin->title }}" @if($index > 1) loading="lazy" @endif>
+                @forelse($featuredProducts as $index => $product)
+                    <a class="hero-specimen specimen-{{ $index + 1 }}" data-category="{{ $product->category }}" href="#{{ $product->category }}-section" aria-label="Explore {{ $product->title }}">
+                        <img src="{{ asset('uploads/' . $product->photo) }}" alt="{{ $product->title }}" @if($index > 1) loading="lazy" @endif>
                     </a>
                 @empty
                     <div class="hero-empty" aria-hidden="true"><x-brand-mark /></div>
@@ -54,11 +54,13 @@
             </div>
 
             @if($categories->isNotEmpty())
-                <nav class="category-navigation" aria-label="Browse product collections" data-reveal>
+                <nav class="category-navigation" aria-label="Filter products by category" data-category-filters hidden>
+                    <button type="button" data-category-filter="all" aria-pressed="true">All products</button>
                     @foreach($categories as $category)
-                        <a href="#{{ $category }}-section">{{ ucfirst($category) }} <span aria-hidden="true">↘</span></a>
+                        <button type="button" data-category-filter="{{ $category }}" aria-pressed="false">{{ ucfirst($category) }}</button>
                     @endforeach
                 </nav>
+                <p class="filter-status" data-filter-status role="status" aria-live="polite"></p>
             @endif
 
             <div class="catalogue" id="collections-content">
@@ -66,15 +68,15 @@
                     <section class="catalogue-section" data-section-category="{{ $category }}" id="{{ $category }}-section" aria-labelledby="heading-{{ $category }}" data-reveal>
                         <div class="catalogue-heading">
                             <h3 id="heading-{{ $category }}">{{ ucfirst($category) }}</h3>
-                            <span>{{ $admins->where('category', $category)->count() }} {{ $admins->where('category', $category)->count() === 1 ? 'creation' : 'creations' }}</span>
+                            <span>{{ $products->where('category', $category)->count() }} {{ $products->where('category', $category)->count() === 1 ? 'creation' : 'creations' }}</span>
                         </div>
 
                         <div class="catalogue-grid">
-                            @foreach($admins->where('category', $category) as $admin)
+                            @foreach($products->where('category', $category) as $product)
                                 <article class="product-specimen" data-reveal>
-                                    <a class="product-image" href="https://wa.me/6285692591642?text={{ rawurlencode('Hello Bloomie Flowers, I would love to order ' . $admin->title . '.') }}" target="_blank" rel="noopener" aria-label="Ask about {{ $admin->title }}">
-                                        @if($admin->photo)
-                                            <img src="{{ asset('uploads/' . $admin->photo) }}" alt="{{ $admin->title }}" loading="lazy">
+                                    <a class="product-image" href="https://wa.me/6285692591642?text={{ rawurlencode('Hello Bloomie Flowers, I would love to order ' . $product->title . '.') }}" target="_blank" rel="noopener" aria-label="Ask about {{ $product->title }}">
+                                        @if($product->photo)
+                                            <img src="{{ asset('uploads/' . $product->photo) }}" alt="{{ $product->title }}" loading="lazy">
                                         @else
                                             <span class="image-fallback" aria-hidden="true"><x-brand-mark /></span>
                                         @endif
@@ -82,10 +84,10 @@
                                     </a>
                                     <div class="product-details">
                                         <div class="product-title-line">
-                                            <h4>{{ $admin->title }}</h4>
-                                            <p class="product-price">Rp {{ number_format($admin->price, 0, ',', '.') }}</p>
+                                            <h4>{{ $product->title }}</h4>
+                                            <p class="product-price">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
                                         </div>
-                                        <p class="product-description">{{ $admin->description }}</p>
+                                        <p class="product-description">{{ $product->description }}</p>
                                     </div>
                                 </article>
                             @endforeach
